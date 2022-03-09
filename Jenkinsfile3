@@ -31,7 +31,7 @@ node {
            steps{
                 withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: "aws-key",
+                credentialsId: "AWS_CREDENTIALS",
                 accessKeyVariable: 'AWS_CREDENTIALS',
                  secretKeyVariable: 'AWS_CREDENTIALS'
              ]]) {
