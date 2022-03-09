@@ -36,7 +36,7 @@ node {
                  secretKeyVariable: 'AWS_CREDENTIALS'
              ]]) {
                
-               sh ' aws eks --region us-west-2 update-kubeconfig --name terraform-eks-demo'
+               sh 'aws eks --region us-west-2 update-kubeconfig --name terraform-eks-demo'
                sh 'kubectl apply -f deploy.yaml'
                sh 'kubectl apply -f service.yaml'
              }
