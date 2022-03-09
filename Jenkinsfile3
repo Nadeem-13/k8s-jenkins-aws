@@ -15,10 +15,10 @@ node {
         sh 'docker version'
         sh 'docker build -t jhooq-docker-demo .'
         sh 'docker image list'
-        sh 'docker tag jhooq-docker-demo rahulwagh17/jhooq-docker-demo:jhooq-docker-demo'
+        sh 'docker tag jhooq-docker-demo 007786/jhooq-docker-demo:jhooq-docker-demo'
     }
 
-    withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
+    withCredentials([string(credentialsId: 'DOCKER_HUB', variable: 'PASSWORD')]) {
         sh 'docker login -u 007786 -p $PASSWORD'
     }
 
@@ -36,7 +36,7 @@ node {
                  secretKeyVariable: 'AWS_CREDENTIALS'
              ]]) {
                
-               sh ' aws eks --region ap-northeast-1 update-kubeconfig --name new-one-cluster'
+               sh ' aws eks --region us-west-2 update-kubeconfig --name terraform-eks-demo'
                sh 'kubectl apply -f deploy.yaml'
                sh 'kubectl apply -f service.yaml'
              }
